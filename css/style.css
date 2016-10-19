@@ -144,6 +144,65 @@ select:focus{
 /* Errors /////////////////////////////////////////////////////////*/
 #error-summary{
 	display:none;
+	margin:40px 0px;
+	border:1px solid #e50000;
+}
+#error-summary ul{
+	padding:.5rem;
+	margin:.5rem;
+	list-style:none;
+	color:#1a1712;
+}
+#error-summary h3, .error-message{
+	background:#e50000;
+	color:#fff;
+	padding:.2rem .8rem;
+	display:block;
+	border:1px solid #e50000;
+	margin-top:0px;
+}
+.error-message{
+	box-sizing:border-box;
+}
+#error-summary h3{
+	padding-left:40px;
+}
+#error-summary h3:before{
+	content:'!';
+	background:#fff;
+	height:1em;
+	width:1em;
+	border-radius:9px;
+	display:inline-block;
+	color:#e50000;
+	margin-right:10px;
+	margin-top:2px;
+	margin-left:-30px;
+	line-height:1em;
+	text-align:center;
+}
+fieldset[aria-invalid="true"]{
+	border:1px solid #e50000;
+	padding:10px 10px 0px 10px;
+}
+fieldset[aria-invalid="true"] span.error-message{
+	margin-left:-10px;
+	margin-right:-10px;
+}
+textarea[aria-invalid="true"], input[type="text"][aria-invalid="true"], select[aria-invalid="true"]{
+	border:1px solid #e50000;
+}
+select[aria-invalid="true"]{
+	margin-bottom:0px;
+}
+
+textarea[aria-invalid="true"]:focus, 
+input[type="text"][aria-invalid="true"]:focus, 
+select[aria-invalid="true"]:focus{
+	outline-offset: -2px;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #e50000;
 }
 
 /* Media Queries //////////////////////////////////////////////////*/
