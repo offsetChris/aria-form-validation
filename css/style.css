@@ -189,6 +189,9 @@ fieldset[aria-invalid="true"] span.error-message{
 	margin-left:-10px;
 	margin-right:-10px;
 }
+select + span.error-message{
+	max-width:320px;
+}
 textarea[aria-invalid="true"], input[type="text"][aria-invalid="true"], select[aria-invalid="true"]{
 	border:1px solid #e50000;
 }
