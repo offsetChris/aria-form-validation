@@ -48,3 +48,9 @@ function validateForm() {
     }  
 
 }
+
+$(function(){
+    $('[aria-required="true"]').each(function(){
+        $(this).parents('.form-item').addClass('required');
+    });
+});

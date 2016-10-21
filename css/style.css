@@ -139,7 +139,12 @@ select:focus{
 	outline-width:2px;
 	outline-color:#2192d2;
 }
-
+.required fieldset legend:after, .required > label:after{
+	content:'*';
+	font-size:.8em;
+	display:inline;
+	margin-left:10px;
+}
 
 /* Errors /////////////////////////////////////////////////////////*/
 #error-summary{
