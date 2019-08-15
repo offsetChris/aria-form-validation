@@ -1,7 +1,10 @@
 
 function validateForm() {
-	var errorSummary = $('#error-summary ul');
-	errorSummary.empty();
+    var errorSummary = $('#error-summary');
+    $('#error-content').remove();
+    var errorContent = '<div id="error-content" role="alert" aria-atomic="true"><p class="error-heading">Please complete all required fields:</p>';
+    
+	// errorSummary.empty();
 	$('#error-summary').hide();
 	$('.error-message').remove();
 
@@ -10,8 +13,8 @@ function validateForm() {
 			if(!$(this).find('input:checked').length > 0){
                 $(this).attr('aria-invalid',true);
                 var errortxt = $(this).find('legend').text();
-                errorSummary.append('<li>'+errortxt+'</li>');
-                $(this).append('<span role="alert" class="error-message">Please choose an option</span>');
+                errorContent += '<p>'+errortxt+'</p>';
+                $(this).append('<span class="error-message">Please choose an option</span>');
             } else {
                 $(this).attr('aria-invalid', false);
             }
@@ -20,8 +23,8 @@ function validateForm() {
 			if($(this).val() == ''){
                 $(this).attr('aria-invalid',true);
                 var errortxt = $(this).prev('label').text();
-                errorSummary.append('<li>'+errortxt+'</li>');
-                $(this).parent().append('<span role="alert" class="error-message">Please enter text</span>');
+                errorContent += '<p>'+errortxt+'</p>';
+                $(this).parent().append('<span class="error-message">Please enter text</span>');
             } else {
                 $(this).attr('aria-invalid', false);
             }
@@ -30,8 +33,8 @@ function validateForm() {
 			if($(this).val() < 0 ){
                 $(this).attr('aria-invalid', true);
                 var errortxt = $(this).parents('.select-wrapper').prev('label').text();
-                errorSummary.append('<li>'+errortxt+'</li>');
-                $(this).parent().append('<span role="alert" class="error-message">Please select an option</span>');
+                errorContent += '<p>'+errortxt+'</p>';
+                $(this).parent().append('<span class="error-message">Please select an option</span>');
             } else {
                 $(this).attr('aria-invalid',false);
             }
@@ -40,7 +43,9 @@ function validateForm() {
 
 	if($('[aria-invalid="true"]').length > 0 ){
         console.log('Errors!');
-        $('#error-summary').fadeIn();
+        errorContent += '</div>';
+        errorSummary.append(errorContent);
+        errorSummary.fadeIn().attr('tabindex','1').focus();
         window.scrollTo(0,0);
     } else {
         // ajax post data
